@@ -1,6 +1,10 @@
-import Image from "next/image";
 import { Inter } from "next/font/google";
 import Balatro from "@/components/Balatro";
+import ScrollVelocity from "@/components/ScrollVelocity";
+import BlurText from "@/components/BlurText";
+import Card from "@/components/Card";
+import Model from "@/components/Model";
+import { Canvas } from "@react-three/fiber";
 
 const interfont = Inter({
   subsets: ["latin"],
@@ -13,11 +17,34 @@ export default function Home() {
       className={`${interfont.className} items-center justify-items-center min-h-screen font-[family-name:var(--font-inter)] w-full`}
     >
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start w-full bg-[#001852]">
-        <div className="w-full h-[100vh] relative">
-          <h1 className="text-[84px] font-extrabold absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white">
-            LegendTruck
-          </h1>
+        <div className="w-full h-[100vh] items-center justify-between flex flex-col overflow-x-hidden">
+          <ScrollVelocity
+            texts={['legendary', 'Carrr']}
+            velocity={100}
+            className="custom-scroll-text text-[#032f99]"
+          />
+          <div className="relative h-[600px] w-full flex flex-col items-center justify-center">
+            <BlurText
+              text="LegendTruck"
+              delay={200}
+              animateBy="letters"
+              direction="bottom"
+              className="text-[132px] mb-8 text-center text-white font-extrabold absolute"
+            />
+            <Canvas className="w-full absolute">
+              <ambientLight intensity={0.5} />
+              <directionalLight position={[10, 10, 5]} intensity={1} />
+              <Model />
+            </Canvas>
+          </div>
+
+          <ScrollVelocity
+            texts={['Best thing frfr', 'You will LOVE it']}
+            velocity={100}
+            className="custom-scroll-text text-[#032f99]"
+          />
         </div>
+
         <div className="w-full h-[600px] relative">
           <Balatro
             isRotate={false}
@@ -31,6 +58,12 @@ export default function Home() {
           <h1 className="text-[84px] font-extrabold absolute top-1/2 left-1/3 transform -translate-x-1/2 -translate-y-1/2 ml-10 text-[#001852]">
             Your ultimate RC car, packed with AI features.
           </h1>
+        </div>
+
+        <div className="w-full h-[600px] items-center justify-center flex flex-row gap-[64px] mh-10">
+          <Card />
+          <Card />
+          <Card />
         </div>
       </main>
     </div>

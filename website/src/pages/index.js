@@ -26,7 +26,7 @@ export default function Home() {
           />
           <div className="relative h-[600px] w-full flex flex-col items-center justify-center">
             <BlurText
-              text="LegendTruck"
+              text="StarCoral V0"
               delay={200}
               animateBy="letters"
               direction="bottom"

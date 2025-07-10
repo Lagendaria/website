@@ -2,9 +2,10 @@ import { Inter } from "next/font/google";
 import Balatro from "@/components/Balatro";
 import ScrollVelocity from "@/components/ScrollVelocity";
 import BlurText from "@/components/BlurText";
-import Card from "@/components/Card";
+import SpotlightCard from "@/components/SpotlightCard";
 import Model from "@/components/Model";
 import { Canvas } from "@react-three/fiber";
+import * as THREE from "three";
 
 const interfont = Inter({
   subsets: ["latin"],
@@ -31,9 +32,11 @@ export default function Home() {
               direction="bottom"
               className="text-[132px] mb-8 text-center text-white font-extrabold absolute"
             />
-            <Canvas className="w-full absolute">
+            <Canvas className="w-full absolute" gl={{
+              toneMapping: THREE.ACESFilmicToneMapping
+            }}>
               <ambientLight intensity={0.5} />
-              <directionalLight position={[10, 10, 5]} intensity={7} />
+              <directionalLight position={[10, 10, 5]} intensity={3} />
               <Model />
             </Canvas>
           </div>
@@ -60,10 +63,25 @@ export default function Home() {
           </h1>
         </div>
 
-        <div className="w-full h-[600px] items-center justify-center flex flex-row gap-[64px] mh-10">
-          <Card />
-          <Card />
-          <Card />
+        <div className="w-full h-[600px] items-center justify-center flex flex-row gap-[64px] p-20">
+          <SpotlightCard className="h-[400px]">
+            <h2 className="text-[40px] font-bold text-white mb-4">AI-Powered Navigation</h2>
+            <p className="text-gray-300 text-[20px]">
+              Paired with a camera, it allows the car to navigate autonomously through complex terrains, avoiding obstacles and adapting to its environment.
+            </p>
+          </SpotlightCard>
+          <SpotlightCard className="h-[400px]">
+            <h2 className="text-[40px] font-bold text-white mb-4">Controllers</h2>
+            <p className="text-gray-300 text-[20px]">
+              Control the car with voice or a controller via Wi-Fi, bluetooth or LoRa, making it versatile for different users and scenarios.
+            </p>
+          </SpotlightCard>
+          <SpotlightCard className="h-[400px]">
+            <h2 className="text-[40px] font-bold text-white mb-4">Stair Climbing</h2>
+            <p className="text-gray-300 text-[20px]">
+              Climb stairs and navigate uneven surfaces with ease, thanks to its advanced design and powerful motors.
+            </p>
+          </SpotlightCard>
         </div>
       </main>
     </div>

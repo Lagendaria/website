@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { useSpring, animated } from '@react-spring/three'
+import { Environment } from '@react-three/drei'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
 
@@ -56,7 +57,9 @@ export default function Model(props) {
                         scale={child.scale}
                         castShadow
                         receiveShadow
-                    />
+                    >
+                        <Environment preset="sunset" />
+                    </mesh>
                 );
             }
         });
